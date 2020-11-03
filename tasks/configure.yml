@@ -6,27 +6,27 @@
   file:
     path: /etc/gazer/conf.d/
     state: directory
-    owner: 'root'
-    group: 'root'
-    mode: '0755'
+    owner: "root"
+    group: "root"
+    mode: "0755"
 
 - name: Set cradle config
   copy:
     content: "{{ __prometheus_combined_cradle_settings | to_nice_yaml(indent=2) }}"
     dest: /etc/gazer/config.yml
-    mode: '0644'
+    mode: "0644"
   notify: Restart prometheus-exporter-deck
 
 - name: Set target configs
   template:
     content: "{{ item.value | to_nice_yaml(indent=2) }}"
-    dest: /etc/gazer/conf.d/{{ item.key }}
+    dest: "/etc/gazer/conf.d/{{ item.key }}"
     mode: "0644"
   loop: "{{ __prometheus_combined_target_settings | dict2items }}"
   notify: Reload prometheus-exporter-deck
 
 - name: List up config files
-  command: bash -c 'set -o pipefail && ls -v /etc/gazer/conf.d'
+  command: bash -c "set -o pipefail && ls -v /etc/gazer/conf.d"
   register: _prometheus_conf_files
   changed_when: False
   check_mode: no
