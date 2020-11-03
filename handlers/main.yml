@@ -1,0 +1,17 @@
+---
+# handlers/main.yml (prometheus)
+# Prefix : prometheus
+
+- name: Restart prometheus-exporter-deck
+  systemd:
+    name: prometheus-exporter-deck.service
+    state: restarted
+    enabled: yes
+  become: yes
+
+- name: Reload prometheus-exporter-deck
+  systemd:
+    name: prometheus-exporter-deck.service
+    state: reloaded
+    enabled: yes
+  become: yes

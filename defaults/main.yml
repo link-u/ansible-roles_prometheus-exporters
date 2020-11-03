@@ -1,32 +1,32 @@
 ---
-# defaults/main.yml (avif)
-# Prefix : avif
+# defaults/main.yml (prometheus)
+# Prefix : prometheus
 
 ## 基本設定
 prometheus_install_flag: True ## インストールフラグ
 prometheus_packages:
   - "prometheus-exporter-deck"
 
-#__prometheus_cradle_settings:
-#  include_dirs:
-#    - './example/config/conf.d'
-#  cli:
-#    standard_log: false
-#  web:
-#    listen_address: ':9231'
-#    metric_path:    '/metrics'
-#    probe_path:     '/probe'
+__prometheus_defaults_cradle_settings:
+  include_dirs:
+    - '/etc/gazer/conf.d'
+  cli:
+    standard_log: false
+  web:
+    listen_address: ':9231'
+    metric_path:    '/metrics'
+    probe_path:     '/probe'
 #    server_tls_cert_path: './example/config/ca/ca.crt'
 #    server_tls_key_path:  './example/config/ca/ca.key'
 #    client_ca_path:       './example/config/ca/ca.crt'
 
-__prometheus_targets:
+__prometheus_defaults_target_settings:
   - exporter:
       endpoints:
         - 'http://localhost:9231/metrics'
 
 ##
-#prometheus_cradle_settings: {}
-#__prometheus_combined_cradle_settings: "{{ __prometheus_cradle_settings | combine(prometheus_cradle_settings, recursive=True) }}"
+prometheus_cradle_settings: {}
+__prometheus_combined_cradle_settings: "{{ __prometheus_defaults_cradle_settings | combine(prometheus_cradle_settings, recursive=True) }}"
 prometheus_target_settings: {}
-__prometheus_combined_target_settings: "{{ __prometheus_target_settings | combine(prometheus_target_settings, recursive=True) }}"
+__prometheus_combined_target_settings: "{{ __prometheus_defaults_target_settings | combine(prometheus_target_settings, recursive=True) }}"
