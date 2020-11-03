@@ -1,6 +1,6 @@
 # Prometheus Exporters
 
-![ansible ci](https://github.com/link-u/ansible-roles_avif/workflows/ansible%20ci/badge.svg)
+[![ansible ci](https://github.com/link-u/ansible-roles_prometheus-exporters/workflows/ansible%20ci/badge.svg)](https://github.com/link-u/ansible-roles_prometheus-exporters/actions?query=workflow%3A%22ansible+ci%22)
 
 ## 概要
 [prometheus-exporters-deck](https://github.com/link-u/dpkg_prometheus-exporter-deck) をインストールして設定する ansible role
