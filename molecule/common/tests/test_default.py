@@ -9,7 +9,3 @@ def test_installed_package(host):
 
 def test_run_help_command(host):
     assert host.run("/usr/sbin/cradle_exporter -h").succeeded
-
-def test_has_config_file(host):
-    assert host.run("/etc/gazer/config.yml").exists
-    assert host.run("/etc/gazer/conf.d/cradle-self-monitor").exists
