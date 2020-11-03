@@ -21,25 +21,30 @@ prometheus_packages:
   - "prometheus-exporter-deck"
 
 prometheus_target_settings:
-  - service:
+  demo-service:
+    service:
       path: '/test/servers/demo-server'
       args:
         - '--example-flag'
         - 'example-value'
       endpoints:
         - 'http://localhost:9999/metricss'
-  - exporter:
+  local-endpoint:
+    exporter:
       endpoints:
         - 'http://localhost:9231/metrics'
-  - script:
+  execute-script:
+    script:
       path: './test/scripts/42.sh'
       args: []
-  - cron:
+  cron-job:
+    cron:
       path: './test/scripts/now.sh'
       args: []
       # See https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format
       every: '*/10 * * * * *'
-  - static:
+  serve-static:
+    static:
       paths:
         - './test/static_files'
 ```
