@@ -21,7 +21,8 @@ __prometheus_defaults_cradle_settings:
 #    client_ca_path:       './example/config/ca/ca.crt'
 
 __prometheus_defaults_target_settings:
-  - exporter:
+  cradle-self-monitor:
+    exporter:
       endpoints:
         - 'http://localhost:9231/metrics'
 
