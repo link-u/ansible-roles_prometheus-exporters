@@ -22,7 +22,6 @@
     content: "{{ item.value | to_nice_yaml(indent=2) }}"
     dest: /etc/gazer/conf.d/{{ item.key }}
     mode: "0644"
-    backup: "{{ nginx_virtual_host_config_backup }}"
   loop: "{{ __prometheus_combined_target_settings | dict2items }}"
   notify: Reload prometheus-exporter-deck
 
