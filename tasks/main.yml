@@ -1,0 +1,8 @@
+---
+# tasks/main.yml (prometheus)
+
+- name: Install tasks
+  import_tasks: install.yml
+  when:
+    - prometheus_install_flag | bool
+  tags: ["install"]

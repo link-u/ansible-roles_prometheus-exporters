@@ -1,0 +1,16 @@
+---
+# See status: 
+# https://doc.mergify.io/configuration.html
+# https://doc.mergify.io/examples.html
+pull_request_rules:
+  - name: Merge PRs from dependabot automatically when it's okay.
+    conditions:
+      - "author=dependabot[bot]"
+      # https://doc.mergify.io/conditions.html#validating-all-status-check
+      - "status-success=ansible-ci (ubuntu1804-ansible28)"
+      - "status-success=ansible-ci (ubuntu1804-ansible29)"
+      - "status-success=ansible-ci (ubuntu2004-ansible28)"
+      - "status-success=ansible-ci (ubuntu2004-ansible29)"
+    actions:
+      merge:
+        method: merge
