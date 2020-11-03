@@ -18,7 +18,7 @@
   notify: Restart prometheus-exporter-deck
 
 - name: Set target configs
-  template:
+  copy:
     content: "{{ item.value | to_nice_yaml(indent=2) }}"
     dest: "/etc/gazer/conf.d/{{ item.key }}"
     mode: "0644"
